@@ -1,6 +1,6 @@
-import React from "react";
+import { createContext } from "react";
 
-let todoContext = React.createContext({
+let todoContext = createContext({
   formInput: "",
   todos: [],
   statusDone: false,

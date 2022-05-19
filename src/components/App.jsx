@@ -1,6 +1,5 @@
 //import react and ...
 import React, { useState, useContext } from "react";
-
 // import contexts
 import todoContext from "../context/TodoContext";
 //import components
@@ -12,11 +11,11 @@ function App(props) {
   let [FormInput, setFormInput] = useState("");
   let [Todos, setTodos] = useState([]);
   let [StatusDone, setStatusDone] = useState(false);
+  let [m, setm] = useState(true);
   let { todos } = useContext(todoContext);
   //methods
   let changeHandler = (e) => {
     setFormInput(e.target.value);
-    console.log(FormInput);
   };
   let SubmitHandler = (e) => {
     e.preventDefault();
@@ -34,6 +33,7 @@ function App(props) {
         todos: Todos,
         statusDone: StatusDone,
         setTodos,
+        setm,
       }}
     >
       <Header title="Todo App!" />

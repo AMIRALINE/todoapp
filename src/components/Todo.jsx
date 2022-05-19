@@ -1,27 +1,44 @@
 import { useEffect, useState, useContext } from "react";
 import todoContext from "./../context/TodoContext";
+import EditTodo from "./editTodo";
 function TodoItem(props) {
+  // hooks and props
   let { todo } = props;
   let TodoContext = useContext(todoContext);
-  let { setTodos, todos } = TodoContext;
-  let [done, setDone] = useState(todo.done);
+  let { setTodos, todos, setm } = TodoContext; // get contexts
+  let [done, setDone] = useState(todo.done); // state
+  let [edit, setEdit] = useState(false);
+  let [text, setText] = useState(todo.text);
   useEffect(() => {
     setDone(todo.done);
   });
   let doneHandler = (e) => {
-    if (done === true) {
-      todo.done = false;
-    } else {
-      todo.done = true;
+    switch (done) {
+      case true:
+        todo.done = false;
+        setm("hdgdfdfa");
+        break;
+      case false:
+        todo.done = true;
+        setm("dfhjzf");
+        break;
+      default:
+        this.destroy();
+        break;
     }
   };
   let deleteHandler = (e) => {
     setTodos(todos.filter((i) => i.key !== todo.key));
   };
-  return (
+  let clickHandler = (e) => {
+    setEdit(true);
+  };
+  return edit ? (
+    <EditTodo todo={todo} setText={setText} setEdit={setEdit} />
+  ) : (
     <div className="col-6 mb-2">
       <div className="d-flex justify-content-between align-items-center border rounded p-3">
-        <div>{todo.text}</div>
+        <div>{text}</div>
         <div>
           <button
             type="buttun"
@@ -32,7 +49,11 @@ function TodoItem(props) {
           >
             {!todo.done ? "done" : "on done"}
           </button>
-          <button type="button" className="btn btn-info btn-sm ml-1">
+          <button
+            type="button"
+            className="btn btn-info btn-sm ml-1"
+            onClick={clickHandler}
+          >
             edit
           </button>
           <button
