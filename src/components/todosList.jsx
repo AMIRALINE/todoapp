@@ -1,4 +1,3 @@
-import { useContext } from "react";
 import todoContext from "./../context/TodoContext";
 import TodoItem from "./Todo";
 
@@ -18,9 +17,18 @@ function Todoslist(props) {
         console.log(filterTodos);
         return (
           <>
-            {filterTodos.map((todo) => (
-              <TodoItem key={todo.key} text={todo.text} done={todo.done} />
-            ))}
+            {context.todos.length !== 0 ? (
+              filterTodos.map((todo) => (
+                <TodoItem
+                  key={todo.key}
+                  todo={todo}
+                  text={todo.text}
+                  done={todo.done}
+                />
+              ))
+            ) : (
+              <p>you haven't got any todos</p>
+            )}
           </>
         );
       }}

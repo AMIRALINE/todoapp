@@ -1,5 +1,5 @@
 //import react and ...
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 // import contexts
 import todoContext from "../context/TodoContext";
@@ -12,6 +12,7 @@ function App(props) {
   let [FormInput, setFormInput] = useState("");
   let [Todos, setTodos] = useState([]);
   let [StatusDone, setStatusDone] = useState(false);
+  let { todos } = useContext(todoContext);
   //methods
   let changeHandler = (e) => {
     setFormInput(e.target.value);
@@ -26,13 +27,13 @@ function App(props) {
 
     setFormInput("");
   };
-  let { todos } = todoContext;
   return (
     <todoContext.Provider
       value={{
         formInput: FormInput,
         todos: Todos,
         statusDone: StatusDone,
+        setTodos,
       }}
     >
       <Header title="Todo App!" />
@@ -73,7 +74,7 @@ function App(props) {
                       setStatusDone(false);
                     }}
                   >
-                    undone <span className="badge badge-secondary">9</span>
+                    undone{" "}
                   </button>
                   <button
                     className={`nav-item nav-link ${
@@ -84,7 +85,7 @@ function App(props) {
                       setStatusDone(true);
                     }}
                   >
-                    done <span className="badge badge-success">9</span>
+                    done
                   </button>
                 </div>
               </nav>
