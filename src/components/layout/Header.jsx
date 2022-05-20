@@ -15,6 +15,7 @@ function Header(props) {
           >
             {title}
           </strong>
+          <span>the time is {Date.now().get}</span>
           <button
             className="btn btn-info"
             onClick={() => {
@@ -27,7 +28,7 @@ function Header(props) {
           >
             {language == "english"
               ? "تغییر زبان به فارسی"
-              : "Chengh language to english"}
+              : "Chenghe language to english"}
           </button>
         </div>
       </div>
