@@ -48,7 +48,7 @@ function App(props) {
         <section className="jumbotron">
           <div className="container d-flex flex-column align-items-center">
             <h1 className="jumbotron-heading">
-              {language !== "english" ? "خوش آمدید!" : "wellcome!"}
+              {language !== "english" ? "خوش آمدید" : "wellcome!"}
             </h1>
             <p className="lead text-muted">
               {language !== "english"
