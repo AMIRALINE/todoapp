@@ -5,7 +5,7 @@ function TodoItem(props) {
   // hooks and props
   let { todo } = props;
   let TodoContext = useContext(todoContext);
-  let { setTodos, todos, setm } = TodoContext; // get contexts
+  let { setTodos, todos, setm, m } = TodoContext; // get contexts
   let [done, setDone] = useState(todo.done); // state
   let [edit, setEdit] = useState(false);
   let [text, setText] = useState(todo.text);
@@ -16,14 +16,14 @@ function TodoItem(props) {
     switch (done) {
       case true:
         todo.done = false;
-        setm("hdgdfdfa");
+
         break;
       case false:
         todo.done = true;
-        setm("dfhjzf");
         break;
       default:
         this.destroy();
+        setm(m + 1);
         break;
     }
   };

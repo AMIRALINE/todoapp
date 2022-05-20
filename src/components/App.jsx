@@ -1,4 +1,4 @@
-//import react and ...
+//import react and hooks
 import React, { useState, useContext } from "react";
 // import contexts
 import todoContext from "../context/TodoContext";
@@ -11,7 +11,7 @@ function App(props) {
   let [FormInput, setFormInput] = useState("");
   let [Todos, setTodos] = useState([]);
   let [StatusDone, setStatusDone] = useState(false);
-  let [m, setm] = useState(true);
+  let [m, setm] = useState(1);
   let { todos } = useContext(todoContext);
   //methods
   let changeHandler = (e) => {
@@ -33,6 +33,7 @@ function App(props) {
         todos: Todos,
         statusDone: StatusDone,
         setTodos,
+        m,
         setm,
       }}
     >
