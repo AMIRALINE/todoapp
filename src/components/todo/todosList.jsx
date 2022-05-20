@@ -1,5 +1,5 @@
 // import contexts
-import todoContext from "./../context/TodoContext";
+import todoContext from "../../context/TodoContext";
 // import components
 import TodoItem from "./Todo";
 function Todoslist(props) {

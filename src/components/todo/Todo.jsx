@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import todoContext from "./../context/TodoContext";
+import todoContext from "../../context/TodoContext";
 import EditTodo from "./editTodo";
 function TodoItem(props) {
   // hooks and props
@@ -16,14 +16,13 @@ function TodoItem(props) {
     switch (done) {
       case true:
         todo.done = false;
-
+        setm(m + 1);
         break;
       case false:
         todo.done = true;
+        setm(m + 1);
         break;
       default:
-        this.destroy();
-        setm(m + 1);
         break;
     }
   };

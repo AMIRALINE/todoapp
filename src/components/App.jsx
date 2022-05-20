@@ -3,8 +3,8 @@ import React, { useState, useContext } from "react";
 // import contexts
 import todoContext from "../context/TodoContext";
 //import components
-import Header from "./Header";
-import Todoslist from "./todosList";
+import Header from "./layout/Header";
+import Todoslist from "./todo/todosList";
 
 function App(props) {
   //hook
