@@ -5,7 +5,7 @@ function TodoItem(props) {
   // hooks and props
   let { todo } = props;
   let TodoContext = useContext(todoContext);
-  let { setTodos, todos, setm, m } = TodoContext; // get contexts
+  let { setTodos, todos, setm, m, language } = TodoContext; // get contexts
   let [done, setDone] = useState(todo.done); // state
   let [edit, setEdit] = useState(false);
   let [text, setText] = useState(todo.text);
@@ -46,21 +46,23 @@ function TodoItem(props) {
             } btn-sm`}
             onClick={doneHandler}
           >
-            {!todo.done ? "done" : "on done"}
+            {language !== "english"
+              ? `${!todo.done ? "انجام" : "انجام نشده"}`
+              : `${!todo.done ? "done" : "undone"}`}
           </button>
           <button
             type="button"
             className="btn btn-info btn-sm ml-1"
             onClick={clickHandler}
           >
-            edit
+            {language !== "english" ? "ویرایش" : "edit"}
           </button>
           <button
             type="button"
             className="btn btn-danger btn-sm ml-1"
             onClick={deleteHandler}
           >
-            delete
+            {language !== "english" ? "حذف" : "delete"}
           </button>
         </div>
       </div>

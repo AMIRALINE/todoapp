@@ -5,5 +5,9 @@ let todoContext = createContext({
   todos: [],
   statusDone: false,
   setTodos: () => {},
+  m: "",
+  setm: () => {},
+  language: "english",
+  setLanguage: () => {},
 });
 export default todoContext;

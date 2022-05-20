@@ -21,7 +21,11 @@ function Todoslist(props) {
                 />
               ))
             ) : (
-              <p>you haven't got any todos</p>
+              <p>
+                {context.language !== "english"
+                  ? "شما هیچ کاری برای انجام ندارید"
+                  : "you haven't got any todos"}
+              </p>
             )}
           </>
         );

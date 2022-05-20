@@ -7,25 +7,29 @@ import Header from "./layout/Header";
 import Todoslist from "./todo/todosList";
 
 function App(props) {
-  //hook
+  //use hooks
+  //states
   let [FormInput, setFormInput] = useState("");
   let [Todos, setTodos] = useState([]);
   let [StatusDone, setStatusDone] = useState(false);
   let [m, setm] = useState(1);
-  let { todos } = useContext(todoContext);
+  let [language, setLanguage] = useState("english");
   //methods
-  let changeHandler = (e) => {
+  function changeHandler(e) {
     setFormInput(e.target.value);
-  };
-  let SubmitHandler = (e) => {
-    e.preventDefault();
-
+  }
+  function addNewTodo() {
     setTodos((prevState) => {
       return [...prevState, { key: Date.now(), done: false, text: FormInput }];
     });
+  }
+  function SubmitHandler(e) {
+    e.preventDefault();
+
+    addNewTodo();
 
     setFormInput("");
-  };
+  }
   return (
     <todoContext.Provider
       value={{
@@ -35,30 +39,40 @@ function App(props) {
         setTodos,
         m,
         setm,
+        language,
+        setLanguage,
       }}
     >
       <Header title="Todo App!" />
       <main>
         <section className="jumbotron">
           <div className="container d-flex flex-column align-items-center">
-            <h1 className="jumbotron-heading">Welcome!</h1>
+            <h1 className="jumbotron-heading">
+              {language !== "english" ? "خوش آمدید!" : "wellcome!"}
+            </h1>
             <p className="lead text-muted">
-              To get started, add some items to your list:
+              {language !== "english"
+                ? "برای شروع چند ایتم به لیست خود اضافه کنید"
+                : "To get started, add some items to your list:"}
             </p>
-            <div className="form-inline">
-              <form className="form-group" onSubmit={SubmitHandler}>
+            <form className="form-inline" onSubmit={SubmitHandler}>
+              <div className="form-group">
                 <input
                   type="text"
                   className="form-control mx-sm-3"
-                  placeholder="i want to do ..."
+                  placeholder={
+                    language !== "english"
+                      ? "من میخواهم ... را انجام دهم"
+                      : "i want to do ..."
+                  }
                   onChange={changeHandler}
                   value={FormInput}
                 />
                 <button className="btn btn-primary" type="Submit">
-                  add
+                  {language !== "english" ? "اضافه کردن" : "add"}
                 </button>
-              </form>
-            </div>
+              </div>
+            </form>
           </div>
         </section>
         <div className="todosList">
@@ -75,7 +89,7 @@ function App(props) {
                       setStatusDone(false);
                     }}
                   >
-                    undone{" "}
+                    {language !== "english" ? "انجام نشده ها" : "undones"}
                   </button>
                   <button
                     className={`nav-item nav-link ${
@@ -86,7 +100,7 @@ function App(props) {
                       setStatusDone(true);
                     }}
                   >
-                    done
+                    {language !== "english" ? "انجام شده ها" : "dones"}
                   </button>
                 </div>
               </nav>
