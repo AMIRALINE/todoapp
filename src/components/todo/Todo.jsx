@@ -36,7 +36,11 @@ function TodoItem(props) {
     <EditTodo todo={todo} setText={setText} setEdit={setEdit} />
   ) : (
     <div className="col-6 mb-2">
-      <div className="d-flex justify-content-between align-items-center border rounded p-3">
+      <div
+        className={`d-flex ${
+          language !== "english" ? "flex-row-reverse" : ""
+        } justify-content-between align-items-center border rounded p-3`}
+      >
         <div>{text}</div>
         <div>
           <button
